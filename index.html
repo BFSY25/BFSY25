@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch创意编程课程中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Marker Felt', '华文圆体', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            background: linear-gradient(90deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: #ff4081;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 主容器 */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 课程头部 */
+        .course-header {
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        #animal-piano .course-header {
+            background: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+        }
+        
+        #ball-game .course-header {
+            background: linear-gradient(90deg, #4fc3f7 0%, #29b6f6 50%, #039be5 100%);
+        }
+        
+        .course-title {
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+        }
+        
+        .course-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .header-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .header-icon {
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* 课程内容部分 */
+        .course-content {
+            padding: 30px;
+        }
+        
+        .phase {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        #animal-piano .phase {
+            border-left: 5px solid #FF99AC;
+        }
+        
+        #ball-game .phase {
+            border-left: 5px solid #4fc3f7;
+        }
+        
+        .phase-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        #animal-piano .phase-header {
+            background-color: #FFEBEE;
+        }
+        
+        #ball-game .phase-header {
+            background-color: #e1f5fe;
+        }
+        
+        .phase-number {
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        #animal-piano .phase-number {
+            background-color: #FF6A88;
+        }
+        
+        #ball-game .phase-number {
+            background-color: #0288d1;
+        }
+        
+        .phase-title {
+            font-size: 1.8rem;
+        }
+        
+        #animal-piano .phase-title {
+            color: #d32f2f;
+        }
+        
+        #ball-game .phase-title {
+            color: #01579b;
+        }
+        
+        .phase-content {
+            padding: 25px;
+        }
+        
+        .teacher-talk {
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        #animal-piano .teacher-talk {
+            background-color: #E3F2FD;
+            border-left: 4px solid #2196F3;
+        }
+        
+        #ball-game .teacher-talk {
+            background-color: #E3F2FD;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .teacher-talk:before {
+            content: "♪";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        #animal-piano .teacher-talk:before {
+            background: #2196F3;
+        }
+        
+        #ball-game .teacher-talk:before {
+            background: #2196F3;
+        }
+        
+        .question {
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        #animal-piano .question {
+            background-color: #FFF8E1;
+            border-left: 4px solid #FFC107;
+        }
+        
+        #ball-game .question {
+            background-color: #FFF8E1;
+            border-left: 4px solid #FFC107;
+        }
+        
+        .question:before {
+            content: "?";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        #animal-piano .question:before {
+            background: #FFC107;
+            color: white;
+        }
+        
+        #ball-game .question:before {
+            background: #FFC107;
+            color: white;
+        }
+        
+        .activity {
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        #animal-piano .activity {
+            background-color: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        #ball-game .activity {
+            background-color: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-comment {
+            color: #75715e;
+        }
+        
+        .code-event {
+            color: #f92672;
+        }
+        
+        .code-motion {
+            color: #a6e22e;
+        }
+        
+        .code-control {
+            color: #fd971f;
+        }
+        
+        .code-sensing {
+            color: #ae81ff;
+        }
+        
+        .code-variables {
+            color: #66d9ef;
+        }
+        
+        .game-preview {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .game-area {
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(180deg, #bbdefb 0%, #e3f2fd 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .player {
+            position: absolute;
+            bottom: 20px;
+            width: 80px;
+            height: 20px;
+            background: linear-gradient(90deg, #ff4081 0%, #f50057 100%);
+            border-radius: 10px;
+            left: 160px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .ball {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 30%, #fff, #ffeb3b);
+            border-radius: 50%;
+            top: 200px;
+            left: 185px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .score-display {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            color: #1a237e;
+            font-weight: bold;
+        }
+        
+        .keyboard-demo {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .key {
+            width: 60px;
+            height: 180px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .key:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .key-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+        
+        .key-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .key-note {
+            font-size: 1.2rem;
+            background: #f5f5f5;
+            width: 100%;
+            text-align: center;
+            padding: 5px;
+            border-radius: 0 0 6px 6px;
+        }
+        
+        .animal-piano {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .animal-key {
+            width: 100px;
+            text-align: center;
+        }
+        
+        .animal {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .animal-label {
+            background: #FFEBEE;
+            padding: 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .direction-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .arrow {
+            font-size: 3rem;
+            color: #1a237e;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 30px 0;
+        }
+        
+        .star {
+            font-size: 2.5rem;
+            color: #FFD700;
+            animation: pulse 2s infinite;
+        }
+        
+        /* 课程切换效果 */
+        .course-section {
+            display: none;
+        }
+        
+        .course-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        /* 底部 */
+        footer {
+            background: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 1.1rem;
+        }
+        
+        /* 动画 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 2.2rem;
+            }
+            
+            .course-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .header-icons {
+                gap: 15px;
+            }
+            
+            .header-icon {
+                font-size: 2.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .game-area {
+                width: 300px;
+                height: 400px;
+            }
+            
+            .key {
+                width: 45px;
+                height: 150px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🧩</span>
+                Scratch创意编程
+            </div>
+            <div class="nav-links">
+                <a href="#animal-piano" class="nav-link active" data-target="animal-piano">
+                    <i class="fas fa-music"></i> 动物钢琴
+                </a>
+                <a href="#ball-game" class="nav-link" data-target="ball-game">
+                    <i class="fas fa-volleyball-ball"></i> 弹小球游戏
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- 动物钢琴课程 -->
+        <section id="animal-piano" class="course-section active">
+            <div class="course-header">
+                <h1 class="course-title">Scratch 动物钢琴音乐会</h1>
+                <div class="course-subtitle">让小动物们一起演奏美妙的音乐！</div>
+                <div class="header-icons">
+                    <div class="header-icon">🎹</div>
+                    <div class="header-icon">🐱</div>
+                    <div class="header-icon">🎵</div>
+                    <div class="header-icon">🐶</div>
+                    <div class="header-icon">🌟</div>
+                </div>
+            </div>
+            
+            <div class="course-content">
+                <!-- 阶段1：引入与互动 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <h2 class="phase-title">欢迎来到动物音乐会！</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="teacher-talk">
+                            <p>"小朋友们大家好！欢迎来到 Scratch 魔法音乐工坊！🎵 大家有没有在音乐课上见过或者摸过真正的钢琴呀？钢琴按下去是不是会发出好听的声音？"</p>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"今天，老师要带大家做一个超级酷的任务——用 Scratch 制作一台独一无二的'动物钢琴'！🐱🐶🐰"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"想象一下，我们不用手指按琴键，而是点击屏幕上的小动物！点击小猫，它'喵'的一声变成 Do；点击小狗，它'汪'的一声变成 Re...太神奇了，对不对？"</p>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"通过弹奏这些动物发出的不同音节，我们就能像演奏家一样，弹出好听的歌曲啦！大家想不想试试看？"</p>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>互动环节：</h3>
+                            <p>"大家平时在音乐课上都学过什么好听的歌呀？"</p>
+                            <p>"有没有会唱《小星星》的小朋友，愿意给大家唱一小段开头？'一闪一闪亮晶晶...'"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"太棒了！今天我们要挑战用我们的动物钢琴弹奏这首特别经典的歌——《小星星》✨！"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 阶段2：搭建舞台与制作琴键 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <h2 class="phase-title">搭建舞台与制作琴键</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="teacher-talk">
+                            <p>"首先，我们需要一个漂亮的舞台！请大家点击这里 <span class="highlight">选择一个背景</span>。"</p>
+                            <p>"想想我们的动物钢琴放在哪里最合适？是森林音乐会🌲？星空下的草地🌌？还是梦幻舞台🎪？"</p>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"大家都知道，真正的钢琴有长长的、黑白相间的琴键，对吧？我们的动物钢琴也需要'琴键'——不过，我们的琴键就是一个个可爱的小动物！"</p>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>绘制动物琴键：</h3>
+                            <p>1. 点击 <span class="highlight">绘制</span> 添加新角色</p>
+                            <p>2. 找到<span class="highlight">矩形工具</span>，画出一个长方形琴键</p>
+                            <p>3. 用<span class="highlight">选择工具</span>选中琴键，复制粘贴多个</p>
+                            <p>4. 调整位置，整齐排列</p>
+                        </div>
+                        
+                        <div class="keyboard-demo">
+                            <div class="key" style="background-color: #FFCDD2;">
+                                <div class="key-color" style="background-color: #FFCDD2;"></div>
+                                <div class="key-number">1</div>
+                                <div class="key-note">Do</div>
+                            </div>
+                            <div class="key" style="background-color: #F8BBD0;">
+                                <div class="key-color" style="background-color: #F8BBD0;"></div>
+                                <div class="key-number">2</div>
+                                <div class="key-note">Re</div>
+                            </div>
+                            <div class="key" style="background-color: #E1BEE7;">
+                                <div class="key-color" style="background-color: #E1BEE7;"></div>
+                                <div class="key-number">3</div>
+                                <div class="key-note">Mi</div>
+                            </div>
+                            <div class="key" style="background-color: #D1C4E9;">
+                                <div class="key-color" style="background-color: #D1C4E9;"></div>
+                                <div class="key-number">4</div>
+                                <div class="key-note">Fa</div>
+                            </div>
+                            <div class="key" style="background-color: #C5CAE9;">
+                                <div class="key-color" style="background-color: #C5CAE9;"></div>
+                                <div class="key-number">5</div>
+                                <div class="key-note">So</div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"大家现在看看自己画好的琴键，能发现什么问题吗？"</p>
+                            <p>"对啦！所有的琴键颜色都一样。如果我们现在开始弹，是不是很难分清点的是哪个'动物琴键'？"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"所以，我们要给每个琴键穿上不同颜色的'衣服'！这样就能一眼认出谁是谁啦！"</p>
+                            <p>1. 用<span class="highlight">选择工具</span>选中琴键</p>
+                            <p>2. 点击<span class="highlight">造型</span>标签页</p>
+                            <p>3. 使用<span class="highlight">填充工具</span>选择颜色</p>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>添加琴键编号：</h3>
+                            <p>1. 选中琴键，点击<span class="highlight">文字工具</span></p>
+                            <p>2. 在琴键上输入数字 <span class="highlight">1</span></p>
+                            <p>3. 复制带数字的琴键，修改为 <span class="highlight">2、3、4、5</span></p>
+                            <p>4. 排列到对应位置</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 阶段3：动物登场与编程 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <h2 class="phase-title">动物登场与编程魔法</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="teacher-talk">
+                            <p>"接下来，让我们的'演奏家'小动物们上场吧！点击<span class="highlight">选择一个角色</span>。"</p>
+                            <p>"从角色库里挑选你喜欢的小动物：小猫、小狗、小兔、小鸟、青蛙...把它们拖到对应的琴键上！"</p>
+                        </div>
+                        
+                        <div class="animal-piano">
+                            <div class="animal-key">
+                                <div class="animal">🐱</div>
+                                <div class="animal-label">1号琴键</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐶</div>
+                                <div class="animal-label">2号琴键</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐰</div>
+                                <div class="animal-label">3号琴键</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐸</div>
+                                <div class="animal-label">5号琴键</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐦</div>
+                                <div class="animal-label">6号琴键</div>
+                            </div>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"现在，我们要给小动物们施放'声音魔法'！让它们一被点击，就发出对应的钢琴音符。"</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-event">当角色被点击时</span> <span class="code-comment">// 黄色事件积木</span><br>
+                            <span class="code-sound">弹奏音符 (60) (0.5) 拍</span> <span class="code-comment">// 紫色声音积木</span><br>
+                            <span class="code-comment">// 60代表Do，数字越大音越高</span>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>操作步骤：</h3>
+                            <p>1. 选中小动物（如小猫）</p>
+                            <p>2. 拖入<span class="highlight">当角色被点击时</span>积木（黄色事件）</p>
+                            <p>3. 拖入<span class="highlight">弹奏音符 (60) (0.5) 拍</span>积木（紫色声音）</p>
+                            <p>4. 点击小猫测试声音</p>
+                            <p>5. 复制代码到其他动物，修改音符数字</p>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"现在点击动物，声音有了。但大家有没有觉得少了点什么？"</p>
+                            <p>"对啦！按琴键的时候，琴键会动一下。我们让小动物也'跳'起来回应我们吧！"</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-event">当角色被点击时</span><br>
+                            <span class="code-sound">弹奏音符 (60) (0.5) 拍</span> <span class="code-comment">// 小猫是60(Do)</span><br>
+                            <span class="code-motion">将y坐标增加 (10)</span> <span class="code-comment">// 向上跳</span><br>
+                            <span class="code-control">等待 (0.25) 秒</span> <span class="code-comment">// 在空中停顿</span><br>
+                            <span class="code-motion">将y坐标增加 (-10)</span> <span class="code-comment">// 落回原位</span><br>
+                            <span class="code-control">等待 (0.25) 秒</span> <span class="code-comment">// 站稳</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 阶段4：音乐会时间 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">4</div>
+                        <h2 class="phase-title">动物音乐会时间！</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="stars">
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"我们要弹《小星星》的第一句：'一闪一闪亮晶晶，满天都是小星星'"</p>
+                            <p>音符：<span class="highlight">1 1 5 5 6 6 5</span> (Do Do So So La La So)</p>
+                        </div>
+                        
+                        <div class="animal-piano">
+                            <div class="animal-key">
+                                <div class="animal">🐱</div>
+                                <div class="animal-label">Do (1)</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐱</div>
+                                <div class="animal-label">Do (1)</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐸</div>
+                                <div class="animal-label">So (5)</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐸</div>
+                                <div class="animal-label">So (5)</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐦</div>
+                                <div class="animal-label">La (6)</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐦</div>
+                                <div class="animal-label">La (6)</div>
+                            </div>
+                            <div class="animal-key">
+                                <div class="animal">🐸</div>
+                                <div class="animal-label">So (5)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>演奏练习：</h3>
+                            <p>"大家看好乐谱，跟着老师一起，我们慢慢弹一遍："</p>
+                            <p>1. 点小猫(Do) → 点小猫(Do) → 点青蛙(So)</p>
+                            <p>2. 点青蛙(So) → 点小鸟(La) → 点小鸟(La) → 点青蛙(So)</p>
+                            <p>"注意节奏：点-点-点-点-点-点-停"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"太棒了！现在让我们所有小小音乐家一起，用我们的动物钢琴，合奏这首《小星星》！"</p>
+                            <p>"跟着老师的拍子，预备~ 开始！"</p>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"有没有勇敢的小演奏家愿意上台，用你的动物钢琴给大家表演一下？"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 弹小球游戏课程 -->
+        <section id="ball-game" class="course-section">
+            <div class="course-header">
+                <h1 class="course-title">Scratch 弹小球游戏</h1>
+                <div class="course-subtitle">学习物理反弹原理与游戏设计基础</div>
+                <div class="header-icons">
+                    <div class="header-icon">🏐</div>
+                    <div class="header-icon">🧚</div>
+                    <div class="header-icon">🎮</div>
+                    <div class="header-icon">🏆</div>
+                </div>
+            </div>
+            
+            <div class="course-content">
+                <!-- 阶段1：引入与互动 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <h2 class="phase-title">游戏引入与概念讲解</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="teacher-talk">
+                            <p>"小朋友们大家好！今天我们要一起制作一个有趣的弹小球游戏！"</p>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"大家有没有玩过拍气球的游戏呢？当气球在空中落下时，我们的手向上拍气球，气球是不是就向上飞了？"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"想象一下：你正在玩一个游戏，需要控制一个小精灵在屏幕底部移动，不断拍打落下来的小球，不让它落地！"</p>
+                        </div>
+                        
+                        <div class="game-preview">
+                            <div class="game-area">
+                                <div class="score-display">得分: 0</div>
+                                <div class="ball"></div>
+                                <div class="player"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>游戏规则：</h3>
+                            <p>1. 使用鼠标控制底部的小精灵左右移动</p>
+                            <p>2. 小球会从上方随机位置落下</p>
+                            <p>3. 当小精灵碰到小球时，小球会向上反弹</p>
+                            <p>4. 每成功反弹一次得1分</p>
+                            <p>5. 小球落地游戏结束</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 阶段2：角色设置与移动 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <h2 class="phase-title">角色设置与玩家控制</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="teacher-talk">
+                            <p>"首先，我们需要选择一个喜欢的角色。老师在这里选择小精灵作为我们的玩家角色。"</p>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"在拍气球游戏中，我们应该站在哪里移动向上拍气球呢？能不能够飞在天上拍气球呢？"</p>
+                            <p>"当然是站在地面上！在这里也就是我们的舞台底部。"</p>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>小精灵移动的程序：</h3>
+                            <p>"我们控制小精灵的移动。把高度固定住，同时设置小精灵的左右移动为鼠标的左右移动。"</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-event">当 ⚑ 被点击</span><br>
+                            <span class="code-control">重复执行</span><br>
+                            <span class="code-motion">移到 x: (鼠标的x坐标) y: (-180)</span> <span class="code-comment">// 固定在舞台底部</span><br>
+                        </div>
+                        
+                        <div class="direction-arrows">
+                            <div class="arrow">◀</div>
+                            <div class="arrow">▶</div>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"这样设置后，小精灵就会跟随鼠标左右移动，但始终保持在舞台底部，准备拍打落下的小球！"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 阶段3：小球下落与反弹 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <h2 class="phase-title">小球行为与物理效果</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="question">
+                            <p>"大家想象一下，教室的天花板上有一个气球。当他从角落落下时，靠近角落的同学一下就抓住了。对远离角落的同学公平吗？"</p>
+                            <p>"如果从正中间落下，是不是大家都有机会去争夺气球呢？所以小球的出场位置在哪里比较合适呢？"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"为了让游戏公平有趣，我们让小球在舞台中央的地方出场！"</p>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>小球初始设置：</h3>
+                            <p>1. 当游戏开始时，小球移动到舞台中央</p>
+                            <p>2. 设置一个随机的初始方向</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-event">当 ⚑ 被点击</span><br>
+                            <span class="code-motion">移到 x: (0) y: (0)</span> <span class="code-comment">// 舞台中央</span><br>
+                            <span class="code-motion">面向 (在 -30 到 30 间随机选一个数) 度</span> <span class="code-comment">// 随机初始角度</span><br>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"在实际的拍气球游戏中，我们能确定气球落下的方向吗？"</p>
+                            <p>"在这个程序中，如果小球只有固定方向，是不是不太贴合现实？"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"所以我们需要使小球运动的方向发生随机的变化，让游戏更有趣！"</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-control">重复执行</span><br>
+                            <span class="code-motion">移动 (5) 步</span><br>
+                            <span class="code-control">如果 &lt;碰到边缘&gt; 那么</span><br>
+                            <span class="code-motion">面向 (在 -180 到 180 间随机选一个数) 度</span> <span class="code-comment">// 随机反弹角度</span><br>
+                            <span class="code-motion">移动 (5) 步</span><br>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 阶段4：游戏交互与得分 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">4</div>
+                        <h2 class="phase-title">游戏交互与计分系统</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="teacher-talk">
+                            <p>"接下来，我们要实现游戏的交互功能：当小精灵碰到小球时，玩家得分，小球向上反弹！"</p>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>建立分数变量：</h3>
+                            <p>1. 创建一个"得分"变量</p>
+                            <p>2. 游戏开始时将得分设置为0</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-event">当 ⚑ 被点击</span><br>
+                            <span class="code-variables">将 [得分 v] 设为 [0]</span><br>
+                        </div>
+                        
+                        <div class="question">
+                            <p>"当我们向上拍气球，气球是不是就向上飞了啊？"</p>
+                            <p>"在游戏中，当小精灵接触到小球时，小球应该怎样运动呢？"</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"我们需要添加判断条件：当小球碰到小精灵时，改变小球的运动方向，让它向上反弹！"</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-control">重复执行</span><br>
+                            <span class="code-motion">移动 (5) 步</span><br>
+                            <span class="code-control">如果 &lt;碰到 [小精灵 v]&gt; 那么</span><br>
+                            <span class="code-motion">面向 (在 60 到 120 间随机选一个数) 度</span> <span class="code-comment">// 向上反弹</span><br>
+                            <span class="code-variables">将 [得分 v] 增加 (1)</span> <span class="code-comment">// 增加分数</span><br>
+                            <span class="code-control">等待 (0.3) 秒</span> <span class="code-comment">// 防止连续得分</span><br>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"添加等待0.3秒是为了保证分数添加的合理性，防止一次接触多次计分。"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 阶段5：游戏结束与优化 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">5</div>
+                        <h2 class="phase-title">游戏结束与优化</h2>
+                    </div>
+                    <div class="phase-content">
+                        <div class="teacher-talk">
+                            <p>"最后，我们需要添加游戏结束条件：当小球落到舞台底部时，游戏结束！"</p>
+                        </div>
+                        
+                        <div class="code-block">
+                            <span class="code-control">重复执行直到 &lt;(y 坐标) &lt; [-180]&gt;</span><br>
+                            <span class="code-motion">移动 (5) 步</span><br>
+                            <span class="code-comment">// 其他代码...</span><br>
+                            <span class="code-control">结束</span><br>
+                            <span class="code-control">停止 [全部 v]</span><br>
+                            <span class="code-sensing">说 [游戏结束! 得分: ] (2) 秒</span><br>
+                            <span class="code-sensing">说 (得分) (2) 秒</span><br>
+                        </div>
+                        
+                        <div class="activity">
+                            <h3>游戏优化建议：</h3>
+                            <p>1. 添加游戏难度随分数增加（小球速度变快）</p>
+                            <p>2. 增加生命值系统（3次机会）</p>
+                            <p>3. 添加背景音乐和音效</p>
+                            <p>4. 设计游戏开始和结束界面</p>
+                        </div>
+                        
+                        <div class="teacher-talk">
+                            <p>"恭喜大家完成了弹小球游戏！现在可以挑战自己，看看能得多少分！"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Scratch创意编程课程设计 © 2023 | 动物钢琴与弹小球游戏</p>
+        <p>培养孩子的计算思维与创造力</p>
+    </footer>
+    
+    <script>
+        // 导航切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const courseSections = document.querySelectorAll('.course-section');
+            
+            // 默认显示第一个课程
+            courseSections[0].classList.add('active');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // 更新导航激活状态
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 切换课程显示
+                    courseSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            setTimeout(() => {
+                                section.classList.add('active');
+                            }, 10);
+                        }
+                    });
+                });
+            });
+            
+            // 弹小球游戏模拟
+            const gameArea = document.querySelector('.game-area');
+            if (gameArea) {
+                const ball = document.querySelector('.ball');
+                const player = document.querySelector('.player');
+                const scoreDisplay = document.querySelector('.score-display');
+                
+                let ballX = 185;
+                let ballY = 200;
+                let ballSpeedX = 3;
+                let ballSpeedY = 4;
+                let playerX = 160;
+                let score = 0;
+                
+                // 鼠标控制玩家移动
+                gameArea.addEventListener('mousemove', function(e) {
+                    const rect = gameArea.getBoundingClientRect();
+                    playerX = e.clientX - rect.left - 40;
+                    if (playerX < 0) playerX = 0;
+                    if (playerX > 320) playerX = 320;
+                    player.style.left = playerX + 'px';
+                });
+                
+                // 小球运动
+                function gameLoop() {
+                    // 更新小球位置
+                    ballX += ballSpeedX;
+                    ballY += ballSpeedY;
+                    
+                    // 边界碰撞检测
+                    if (ballX <= 0 || ballX >= 370) {
+                        ballSpeedX = -ballSpeedX;
+                    }
+                    
+                    if (ballY <= 0) {
+                        ballSpeedY = -ballSpeedY;
+                    }
+                    
+                    // 玩家碰撞检测
+                    if (ballY >= 450 && 
+                        ballX + 15 > playerX && 
+                        ballX < playerX + 80) {
+                        ballSpeedY = -Math.abs(ballSpeedY);
+                        score++;
+                        scoreDisplay.textContent = `得分: ${score}`;
+                    }
+                    
+                    // 游戏结束检测
+                    if (ballY >= 500) {
+                        ballY = 200;
+                        ballX = 185;
+                        ballSpeedY = Math.abs(ballSpeedY);
+                        score = 0;
+                        scoreDisplay.textContent = `得分: ${score}`;
+                    }
+                    
+                    // 更新小球位置
+                    ball.style.left = ballX + 'px';
+                    ball.style.top = ballY + 'px';
+                    
+                    requestAnimationFrame(gameLoop);
+                }
+                
+                gameLoop();
+            }
+        });
+    </script>
+</body>
+</html>
